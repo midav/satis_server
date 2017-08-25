@@ -4,3 +4,11 @@
 
 - name: restart nginx
   service: name=nginx enabled=yes state=restarted
+
+- name: COMMAND | Build the repository
+  command: "{{ satis_build_command }}"
+  when: >
+    satis_config_file_created.changed == true or
+    find_satis_build_dir.matched == 0
+  tags:
+  - skip_ansible_lint

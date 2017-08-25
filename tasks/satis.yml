@@ -19,12 +19,6 @@
     paths: "{{ satis_build_dir }}"
   register: find_satis_build_dir
 
-- name: COMMAND | Build the repository
-  command: "{{ satis_build_command }}"
-  when: >
-    satis_config_file_created.changed == true or
-    find_satis_build_dir.matched == 0
-
 - name: FILE | Fix owner/group
   file:
     path: "{{ satis_user_home }}"

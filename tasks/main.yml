@@ -1,0 +1,19 @@
+---
+
+- name: INCLUDE | User
+  include: user.yml
+
+- name: INCLUDE | Install
+  include: install.yml
+
+- name: INCLUDE | Satis configuration
+  include: satis.yml
+
+- name: INCLUDE | Crontab configuration
+  include: cron.yml
+
+- name: INCLUDE | php-fpm configuration
+  include: php-fpm.yml
+
+- name: INCLUDE | Nginx configuration
+  include: nginx.yml

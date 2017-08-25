@@ -1,0 +1,48 @@
+---
+
+- hosts: all
+  vars:
+    satis_require_all: false
+    satis_require:
+      'symfony/polyfill-apcu': '*'
+    satis_manage_cron: true
+    epelReleaseMajorVersion: 7
+    epelReleaseMinorVersion: 6
+
+  pre_tasks:
+
+    - name: yum-clean-metadata
+      command: yum clean metadata
+      args:
+        warn: no
+
+    - name: YUM | Add repository EPEL
+      yum:
+        name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{epelReleaseMajorVersion}}.noarch.rpm
+    
+    - name: YUM | Add repository PHP7
+      yum:
+        name: https://mirror.webtatic.com/yum/el{{epelReleaseMajorVersion}}/webtatic-release.rpm
+
+
+    - name: YUM | Install PHP Nginx php-fpm
+      yum:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+      - php{{yum_php_version}}-cli
+      - php{{yum_php_version}}-curl 
+      - php{{yum_php_version}}-json 
+      - php{{yum_php_version}}-fpm
+      - git 
+      - wget
+      - nginx
+
+    - name: GET_URL | Install composer
+      get_url:
+        url: https://getcomposer.org/composer.phar
+        dest: /usr/local/bin/composer
+        mode: 0755
+
+  roles:
+    - ../../

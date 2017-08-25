@@ -1,0 +1,10 @@
+---
+
+- name: USER | Create Satis user
+  user:
+    name: "{{ satis_user }}"
+    createhome: yes
+    home: "{{ satis_user_home }}"
+    state: present
+    shell: "/bin/bash"
+    generate_ssh_key: yes

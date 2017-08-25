@@ -1,0 +1,25 @@
+---
+
+- name: STAT | Check if satis is installed
+  stat:
+    path: "{{ satis_installation }}"
+  register: satis_installed
+
+- name: COMPOSER | Install satis
+  composer:
+    command: "create-project"
+    arguments: "composer/satis --stability=dev --keep-vcs"
+    working_dir: "{{ satis_user_home }}"
+  when: satis_installed.stat.exists == false
+
+- name: COMPOSER | Configure Composer to ignore ssl
+  composer:
+    command: "config"
+    arguments: "-g secure-http false"
+    working_dir: "{{ satis_user_home }}"
+  when: satis_composer_ignore_secure_http
+
+- name: FILE | Fix permission on satis executable
+  file:
+    path: "{{ satis_bin }}"
+    mode: "0755"

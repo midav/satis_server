@@ -1,0 +1,23 @@
+galaxy_info:
+  author: Midav
+  description: Setting Up a Local Mirror for Composer Packages With Satis
+  license: MIT
+  min_ansible_version: 2.0
+  platforms:
+  - name: RHN
+    versions:
+    - all
+  - name: Centos
+    versions:
+    - all
+ 
+  galaxy_tags:
+  - Centos
+  - Nginx
+  - development
+  - satis
+  - php-fpm
+  - composer
+  - web
+
+dependencies: []

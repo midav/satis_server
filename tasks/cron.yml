@@ -1,0 +1,10 @@
+---
+
+- name: CRON | Manage cron entry
+  cron:
+    name: satis-build
+    state: present
+    user: "{{ satis_user }}"
+    special_time: 'daily'
+    job: "{{ satis_build_command }}"
+  when: satis_manage_cron

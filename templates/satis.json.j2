@@ -1,0 +1,14 @@
+{
+	"name": "{{ satis_repo_name }}",
+	"homepage": "{{ satis_repo_homepage }}",
+	"repositories": {{ satis_repos | to_nice_json }},
+	{%- if satis_require is not none %}"require": {{ satis_require | to_nice_json }},{% endif %}
+	"require-all": {{ satis_require_all | to_json }},
+	"require-dependencies": {{ satis_require_dependencies | to_json }},
+	"require-dev-dependencies": {{ satis_require_dev_dependencies | to_json }},
+	"archive": {
+		"directory": "dist",
+		"format": "zip",
+		"skip-dev": {{ satis_skip_dev | to_json }}
+	}
+}

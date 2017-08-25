@@ -1,0 +1,4 @@
+---
+
+satis_bin: "{{ satis_installation }}/bin/satis"
+satis_build_command: "{{ satis_bin }} build {{ satis_config_file }} {{ satis_build_dir }}"

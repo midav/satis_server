@@ -1,4 +1,5 @@
-Role Name
+# Satis Server
+[![Build Status](https://travis-ci.org/midav/satis_server.svg?branch=master)](https://travis-ci.org/midav/satis_server) [![Release]
 =========
 
 Setting Up a Local Mirror for Composer Packages With Satis.

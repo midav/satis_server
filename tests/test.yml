@@ -11,11 +11,6 @@
 
   pre_tasks:
 
-    - name: yum-clean-metadata
-      command: yum clean metadata
-      args:
-        warn: no
-
     - name: YUM | Add repository EPEL
       yum:
         name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{epelReleaseMajorVersion}}.noarch.rpm
@@ -30,7 +25,7 @@
       with_items:
       - php{{yum_php_version}}-cli
       - php{{yum_php_version}}-curl
-      - php{{yum_php_version}}-json 
+      - php{{yum_php_version}}-json
       - php{{yum_php_version}}-fpm
       - git
       - wget

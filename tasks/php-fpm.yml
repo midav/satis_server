@@ -14,7 +14,7 @@
     dest: /etc/php.ini
     owner: root
     group: root
-    mode: 644
+    mode: 0644
   notify: restart php-fpm
 
 # setting the www.conf .

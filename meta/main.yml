@@ -10,7 +10,6 @@ galaxy_info:
   - name: Centos
     versions:
     - all
- 
   galaxy_tags:
   - Centos
   - Nginx

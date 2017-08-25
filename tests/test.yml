@@ -19,22 +19,20 @@
     - name: YUM | Add repository EPEL
       yum:
         name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-{{epelReleaseMajorVersion}}.noarch.rpm
-    
+
     - name: YUM | Add repository PHP7
       yum:
         name: https://mirror.webtatic.com/yum/el{{epelReleaseMajorVersion}}/webtatic-release.rpm
 
-
     - name: YUM | Install PHP Nginx php-fpm
       yum:
         name: "{{ item }}"
-        state: latest
       with_items:
       - php{{yum_php_version}}-cli
-      - php{{yum_php_version}}-curl 
+      - php{{yum_php_version}}-curl
       - php{{yum_php_version}}-json 
       - php{{yum_php_version}}-fpm
-      - git 
+      - git
       - wget
       - nginx
 
